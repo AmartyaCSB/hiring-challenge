@@ -1,0 +1,9 @@
+$ awk -F' *\\| *' '
+$0 !~ /^#/ && $3 ~/Mars/ && $4 ~ /Completed/ {
+if ($6 > max_duration) {
+max_duration = $6
+security_code = $8
+}
+}
+END { print security_code }
+' space_missions.log
